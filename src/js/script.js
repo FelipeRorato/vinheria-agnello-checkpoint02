@@ -58,7 +58,7 @@ function mostrarVinhoConsole(numero, nome, tipo, safra, estoque, preco) {
     console.log("Preco: R$ " + preco);
  
     if (estoqueBaixo(estoque)) {
-        console.log("AVISO: Estoque baixo!");
+        console.log("Estoque baixo desse vinho!");
     }
 }
  
@@ -80,33 +80,33 @@ function iniciarSistema() {
  
         var nome = prompt("Vinho #" + totalVinhos + "\nDigite o nome do vinho:");
         while (!validarTexto(nome)) {
-            alert("Nome invalido! Tente novamente.");
+            alert("Nome invalido.");
             nome = prompt("Vinho #" + totalVinhos + "\nDigite o nome do vinho:");
         }
  
-        var tipo = prompt("Vinho #" + totalVinhos + "\nDigite o tipo (Tinto, Branco, Rose...):");
+        var tipo = prompt("Vinho #" + totalVinhos + "\nDigite o tipo (Tinto, Branco, Rose, etc...):");
         while (!validarTexto(tipo)) {
-            alert("Tipo invalido! Tente novamente.");
-            tipo = prompt("Vinho #" + totalVinhos + "\nDigite o tipo (Tinto, Branco, Rose...):");
+            alert("Tipo invalido.");
+            tipo = prompt("Vinho #" + totalVinhos + "\nDigite o tipo (Tinto, Branco, Rose, etc...):");
         }
  
         var safraTexto = prompt("Vinho #" + totalVinhos + "\nDigite o ano da safra:");
         while (!validarNumero(safraTexto)) {
-            alert("Ano invalido! Digite apenas numeros.");
+            alert("Ano invalido.");
             safraTexto = prompt("Vinho #" + totalVinhos + "\nDigite o ano da safra:");
         }
         var safra = parseInt(safraTexto);
  
         var estoqueTexto = prompt("Vinho #" + totalVinhos + "\nQuantidade em estoque:");
         while (!validarNumero(estoqueTexto)) {
-            alert("Quantidade invalida! Digite apenas numeros.");
+            alert("Quantidade invalida.");
             estoqueTexto = prompt("Vinho #" + totalVinhos + "\nQuantidade em estoque:");
         }
         var estoque = parseInt(estoqueTexto);
  
         var precoTexto = prompt("Vinho #" + totalVinhos + "\nPreco por garrafa (R$):");
         while (!validarNumero(precoTexto)) {
-            alert("Preco invalido! Digite apenas numeros.");
+            alert("Preco invalido.");
             precoTexto = prompt("Vinho #" + totalVinhos + "\nPreco por garrafa (R$):");
         }
         var preco = parseInt(precoTexto);
@@ -126,7 +126,7 @@ function iniciarSistema() {
         mostrarVinhoConsole(totalVinhos, nome, tipo, safra, estoque, preco);
  
         if (estoqueBaixo(estoque)) {
-            alert("ATENCAO: O vinho '" + nome + "' esta com estoque baixo! (" + estoque + " unidades)");
+            alert("O vinho '" + nome + "' esta com estoque baixo (" + estoque + " unidades)");
             totalEstoqueBaixo++;
         }
         if (safra < safraVinhoMaisAntigo) {
@@ -134,12 +134,12 @@ function iniciarSistema() {
             nomeVinhoMaisAntigo = nome;
         }
         if (totalVinhos < 5) {
-            var resposta = prompt("Deseja cadastrar outro vinho?\nDigite S para sim ou N para nao:");
+            var resposta = prompt("Quer cadastrar outro vinho?\nDigite S para sim ou N para nao:");
             if (resposta == null || resposta.toUpperCase() != "S") {
                 continuar = false;
             }
         } else {
-            alert("Limite de 5 vinhos atingido!");
+            alert("Limite de 5 vinhos atingido");
             continuar = false;
         }
     }
@@ -181,7 +181,7 @@ function mostrarRelatorio() {
         html += "<p><b>Estoque:</b> " + estoque + " unidades";
  
         if (estoqueBaixo(estoque)) {
-            html += "ESTOQUE BAIXO";
+            html += "Estoque baixo";
         }
  
         html += "</p>";
@@ -192,7 +192,7 @@ function mostrarRelatorio() {
     html += "<div id='resumo-final'>";
     html += "<h3>Resumo Final</h3>";
     html += "<p>Total de vinhos cadastrados: <b>" + totalVinhos + "</b></p>";
-    html += "<p>Vinhos com estoque baixo: <b>" + totalEstoqueBaixo + "</b></p>";
+    html += "<p>Total de vinhos com estoque baixo: <b>" + totalEstoqueBaixo + "</b></p>";
     html += "<p>Vinho com a safra mais antiga: <b>" + nomeVinhoMaisAntigo + " (" + safraVinhoMaisAntigo + ")</b></p>";
     html += "</div>";
  
@@ -202,13 +202,13 @@ function mostrarRelatorio() {
  
     console.log("=== RELATORIO FINAL ===");
     console.log("Total cadastrado: " + totalVinhos);
-    console.log("Estoques baixos: " + totalEstoqueBaixo);
+    console.log("Total de estoques baixos: " + totalEstoqueBaixo);
     console.log("Vinho mais antigo: " + nomeVinhoMaisAntigo + " - safra " + safraVinhoMaisAntigo);
  
     alert(
         "Cadastro finalizado!\n\n" +
         "Total de vinhos: " + totalVinhos + "\n" +
-        "Estoques baixos: " + totalEstoqueBaixo + "\n" +
+        "Total de estoques baixos: " + totalEstoqueBaixo + "\n" +
         "Safra mais antiga: " + nomeVinhoMaisAntigo + " (" + safraVinhoMaisAntigo + ")"
     );
 }
