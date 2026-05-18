@@ -34,7 +34,7 @@ function estoqueBaixo(quantidade) {
 }
 
 function classificarVinho(anoSafra) {
-    var anoAtual = 2025;
+    var anoAtual = 2026;
     var idade = anoAtual - anoSafra;
  
     if (idade <= 3) {
